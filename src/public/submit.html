@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Scobido!</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="icon" href="/img/manifest/icon-48x48.png">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <style type="text/css">
+    html,
+    body {
+        height: 100%;
+        background: #82B1FF;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+    }
+    
+    .content {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 16px 0;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    
+    form {
+        width: 100%;
+    }
+    
+    form h2 {
+        margin-top: -32px;
+        margin-bottom: 24px;
+    }
+    
+    input {
+        display: inline-block;
+        width: 100%;
+        font-size: 24px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        box-shadow: none;
+        border-radius: 3px;
+        box-sizing: border-box;
+        background: #448AFF;
+        color: white;
+        text-align: center;
+        padding: 12px;
+        border: none;
+        border-bottom: solid 2px #82B1FF;
+        -webkit-transition: border 0.3s;
+        transition: border 0.3s;
+    }
+    
+    input::-webkit-input-placeholder {
+        color: #2979FF;
+    }
+    
+    input:focus {
+        outline: none;
+    }
+    
+    input:focus,
+    input.focus {
+        border-bottom: solid 2px #F48FB1;
+    }
+    
+    .g-dummy {
+        height: 122px;
+        opacity: 0;
+        -webkit-transform: scale(0.7);
+        transform: scale(0.7);
+        pointer-events: none;
+        -webkit-transition: opacity 0.5s ease-in-out;
+        -webkit-transition: opacity 0.3s ease-in-out, -webkit-transform 0.5s ease-in-out;
+        transition: opacity 0.3s ease-in-out, -webkit-transform 0.5s ease-in-out;
+        transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out;
+        transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+    }
+    
+    .g-dummy.show {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        pointer-events: all;
+    }
+    
+    .g-recaptcha {
+        display: inline-block;
+        padding: 24px 0;
+        margin-top: -72px;
+        z-index: 1;
+    }
+    
+    #loading {
+        display: none;
+        margin-top: -72px;
+    }
+    
+    #loading h2 {
+        margin-top: -40px;
+    }
+    
+    .spinner {
+        width: 88px;
+        height: 88px;
+        margin: 88px;
+        animation: rotate 1.4s infinite ease-in-out, background 1.4s infinite ease-in-out alternate;
+        -webkit-animation: rotate 1.4s infinite ease-in-out, background 1.4s infinite ease-in-out alternate;
+    }
+    
+    h1,
+    h2,
+    h3 {
+        font-weight: 400;
+    }
+    
+    @keyframes rotate {
+        0% {
+            -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        }
+        50% {
+            -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+        }
+        100% {
+            -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+            transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+        }
+    }
+    
+    @-webkit-keyframes rotate {
+        0% {
+            -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        }
+        50% {
+            -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+        }
+        100% {
+            -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+        }
+    }
+    
+    @keyframes background {
+        0% {
+            background-color: #1DE9B6;
+        }
+        50% {
+            background-color: #FFAB40;
+        }
+        100% {
+            background-color: #FF5252;
+        }
+    }
+    
+    @-webkit-keyframes background {
+        0% {
+            background-color: #1DE9B6;
+        }
+        50% {
+            background-color: #FFAB40;
+        }
+        100% {
+            background-color: #FF5252;
+        }
+    }
+    
+    .scaleUp {
+        -webkit-animation-name: bounceIn;
+        animation-name: bounceIn;
+        -webkit-animation-duration: 500ms;
+        animation-duration: 500ms;
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        will-change: -webkit-transform, opacity;
+        will-change: transform, opacity;
+        font-weight: bold;
+        z-index: 1;
+    }
+    
+
+    @-webkit-keyframes bounceIn {
+        1% {
+            -webkit-transform: scale(0.9), translate3d(0, 64px, 0);
+            transform: scale(0.9), translate3d(0, 64px, 0);
+            opacity: 0;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1), translate3d(0, 0, 0);
+            transform: scale(1), translate3d(0, 0, 0);
+        }
+    }
+
+    @keyframes bounceIn {
+        1% {
+            -webkit-transform: scale(0.9), translate3d(0, 64px, 0);
+            transform: scale(0.9) translate3d(0, 64px, 0);
+            opacity: 0;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1), translate3d(0, 0, 0);
+            transform: scale(1) translate3d(0, 0, 0);
+        }
+    }
+        
+   #step1 {
+        -webkit-transition: -webkit-transform 200ms ease-out;
+        transition: -webkit-transform 200ms ease-out;
+        transition: transform 200ms ease-out;
+        transition: transform 200ms ease-out, -webkit-transform 200ms ease-out;
+        will-change: transform, opacity;
+    }
+    
+    .small {
+        opacity: 0.9;
+        -webkit-transform: translateY(-64px) scale(0.7);
+        transform: translateY(-64px) scale(0.7);
+    }
+
+    @media screen and (max-width: 640px) {
+        form {
+            max-width: 420px;
+        }
+    }
+    
+    @media screen and (max-width: 440px) {
+        form {
+            max-width: 340px;
+        }
+        input {
+            font-size: 18px;
+        }
+    }
+    
+    @media screen and (max-width: 380px) {
+        form {
+            max-width: 304px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/hot"><img src="/img/icons/hot.svg"> Hot</a><a href="/new"><img src="/img/icons/new.svg"> New</a>
+    </header>
+    <script>
+    function imNotARobot(e) {
+        var form = document.getElementById("form");
+        form.submit();
+        form.style.display = "none";
+        document.getElementById("loading").style.display = "inline-block";
+    }
+
+
+    var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+    var regex = new RegExp(expression);
+    var lastValue = '';
+
+
+    var timeout;
+
+    function debounce(callback) {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(function() {
+            callback ? callback() : null;
+        }, 300);
+    }
+
+    function validate(value) {
+        debounce();
+        if (value == lastValue)
+            return;
+
+        if (value && value.toLowerCase().indexOf('http') !== 0 ) {
+            document.getElementById("input").value = 'http://' + value;
+        }
+
+        lastValue = value;
+        var el = document.getElementById("recaptcha");
+        var el2 = document.getElementById("step1");
+
+        var cleanValue = value.replace('//www.', '//');
+
+        if (cleanValue.match(regex)) {
+            debounce(function() {
+                el.className += ' show scaleUp';
+                el2.className = 'small';
+            });
+        } else {
+            el.className = 'g-dummy';
+            el2.className = '';
+        }
+    }
+
+    function checkSubmit() {
+        if (grecaptcha.getResponse() === "") {
+            return false;
+        }
+        return true;
+    }
+    </script>
+    <div class="content">
+        <noscript>
+            <h1>Enable Javascript to submit a link.</h1>
+            <style type="text/css">
+            form {
+                display: none;
+            }
+            </style>
+        </noscript>
+        <link rel="stylesheet" type="text/css" href="animations.css">
+        <form onsubmit="return checkSubmit();" action="/post" method="POST" id="form">
+            <div id="step1" class="animated zoomInDown">
+                <h2>Share News on Scobido:</h2>
+                <input id="input" name="url" autofocus type="url" autocomplete="off" placeholder="http://interesting.com" required oninput="validate(this.value)">
+            </div>
+            <div class="g-dummy" id="recaptcha">
+                <div class="g-recaptcha" data-sitekey="6LemjwsUAAAAAFaExgJCrbzJIQxx9kyfCaxJQnRt" data-callback="imNotARobot"></div>
+            </div>
+        </form>
+        <div id="loading">
+            <div class="spinner"></div>
+            <h2>Uploading...</h2>
+        </div>
+    </div>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+
+</html>

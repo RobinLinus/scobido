@@ -1,0 +1,70 @@
+RewriteEngine On
+
+# static files in public directory
+
+RewriteRule ^/?$ /public/index.html [L,S=20]
+RewriteRule ^/?hot/?$ /public/index.html [L]
+RewriteRule ^/?new/?$ /public/new.html [L]
+RewriteRule ^/?submit/?$ /public/submit.html [L]
+RewriteRule ^/?shooot/?$ /public/shooot.html [L]
+RewriteRule ^/?sweeet/?$ /public/sweeet.html [L]
+
+RewriteCond  %{DOCUMENT_ROOT}/$1 -f [OR]
+RewriteCond  %{DOCUMENT_ROOT}/$1 -d
+RewriteRule  ^(.*)$  - [L,S=3]
+
+RewriteCond  %{DOCUMENT_ROOT}/public/$1 -f [OR]
+RewriteCond  %{DOCUMENT_ROOT}/public/$1 -d
+RewriteRule  ^(.*)$  /public/$1  [L,S=2]
+
+
+RewriteRule  ^(.*)$ api.php [L]
+
+
+
+ErrorDocument 400 /public/shooot.html
+ErrorDocument 401 /public/shooot.html
+ErrorDocument 402 /public/shooot.html
+ErrorDocument 403 /public/shooot.html
+ErrorDocument 404 /public/shooot.html
+ErrorDocument 405 /public/shooot.html
+ErrorDocument 406 /public/shooot.html
+ErrorDocument 407 /public/shooot.html
+ErrorDocument 408 /public/shooot.html
+ErrorDocument 409 /public/shooot.html
+ErrorDocument 410 /public/shooot.html
+
+ErrorDocument 500 /public/shooot.html
+ErrorDocument 501 /public/shooot.html
+ErrorDocument 502 /public/shooot.html
+ErrorDocument 503 /public/shooot.html
+ErrorDocument 504 /public/shooot.html
+ErrorDocument 505 /public/shooot.html
+
+Header unset X-Powered-By
+ServerSignature Off
+AddDefaultCharset utf-8
+
+<FilesMatch ".(jpg|png|ico)$">
+Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+
+<FilesMatch ".(js|css)$">
+Header set Cache-Control "max-age=604800"
+</FilesMatch>
+
+<FilesMatch ".(html)$">
+	Header set X-Frame-Options DENY
+</FilesMatch>
+
+<FilesMatch "(index|new).html$">
+Header set Cache-Control "max-age=10"
+</FilesMatch>
+
+RedirectMatch 404 "\.htaccess"
+<IfModule mod_deflate.c>
+ AddOutputFilterByType DEFLATE text/html
+ AddOutputFilterByType DEFLATE text/css
+ AddOutputFilterByType DEFLATE image/svg+xml
+ AddOutputFilterByType DEFLATE application/javascript
+</IfModule>

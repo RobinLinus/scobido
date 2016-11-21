@@ -1,0 +1,8 @@
+{
+    "require": {
+        "nlp-tools/nlp-tools": "1.0.*@dev",
+        "google/recaptcha": "~1.1",
+        "eventviva/php-image-resize": "1.6.*",
+        "neitanod/forceutf8": "dev-master"
+    }
+}

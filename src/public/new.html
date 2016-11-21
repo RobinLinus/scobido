@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> ~ Scobido ~ </title>
+    <link rel="icon" href="/img/manifest/icon-48x48.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <meta name="theme-color" content="#1976D2">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Scobido">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Scobido">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="apple-touch-icon" sizes="192x192" href="/img/manifest/icon-192x192.png">
+
+    <meta name="msapplication-TileImage" content="/img/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#1976D2">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <meta name="description" content="The crowd-sourced Frontpage of the World Wide Web.">
+    <meta name="twitter:image" content="http://scobido.com/img/manifest/scobido.png" />
+    <meta name="twitter:author" content="@RobinLinus" />
+    <meta name="twitter:description" content="The crowd-sourced Frontpage of the World Wide Web.">
+    <meta property="og:description" content="The crowd-sourced Frontpage of the World Wide Web.">
+    <meta property="og:type" content="article" />
+    <meta property="og:author" content="https://facebook.com/RobinLinus" />
+    <meta property="og:image" content="http://scobido.com/img/manifest/scobido.png?v=2" />
+    <meta property="og:url" content="http://scobido.com/" />
+    <meta property="fb:pages" content="451189218422617" />
+    <meta property="fb:profile_id" content="451189218422617" />
+
+    <style>
+        html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #e2e1e0;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'Noto', 'Helvetica Neue', 'Helvetica', sans-serif;
+    line-height: 1.5;
+    background-color: #eeeeee;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: -moz-scrollbars-none;
+}
+
+header {
+    width: 100%;
+    height: 64px;
+    background-color: #4285f4;
+    margin-bottom: 8px;
+    color: white;
+    font-size: 21px;
+    text-align: center;
+    z-index: 1;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.14);
+    position: fixed;
+}
+
+
+header a {
+    color: white;
+    font-size: 23px;
+    text-decoration: none;
+    max-width: 470px;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    line-height: 64px;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+    display: inline-block;
+    background: rgba(255,255,255,0.03); 
+}
+
+header a img {
+    margin-bottom: -5px;
+    margin-left: -20px;
+    height: 28px;
+    width: 28px;
+}
+
+header a.active {
+    background: rgba(255,255,255,0.07); 
+    border-bottom: 2px solid #F48FB1;
+}
+
+header a:hover {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+footer {
+    background: #424242;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    padding: 4px;
+    color: white;
+    box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.14);
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+::-moz-scrollbar { 
+    display: none; 
+}
+
+.scroller {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 72px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.content {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 128px;
+}
+
+.card {
+    text-align: left;
+    color: text-align: left;
+    border-radius: 2px;
+    display: inline-block;
+    width: 300px;
+    margin: 0.5rem;
+    position: relative;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+
+.card a {
+    text-decoration: none;
+    color: #131516;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 300px;
+    height: 200px;
+    background-color: #E0E0E0;
+}
+
+.card-content {
+    padding: 16px 16px 8px;
+}
+
+.card-content .title {
+    height: 60px;
+    overflow: hidden;
+    font-size: 17px;
+    line-height: 19px;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; 
+}
+
+.card-content .details {
+    color: #828282;
+    font-size: 13px;
+}
+
+.card-actions {
+    border-top: 1px solid #e8e8e8;
+    padding: 5px 16px;
+    font-size: 13px;
+    color: #373d3f;
+}
+
+.card .icon {
+    width: 16px;
+    margin-bottom: -3px;
+}
+
+.fab {
+    display: block;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #ff4081;
+    fill: white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 56px;
+    width: 56px;
+    min-width: 0;
+    outline: none;
+    padding: 16px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index: 1;
+    /* NOTE: Both values are needed, since some phones require the value `transparent`. */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    transition: transform 200ms ease-out;
+    will-change: transform;
+    overflow: hidden;
+    animation-delay: 700ms;
+    -webkit-animation-delay: 700ms;
+}
+
+.fab:hover, .fab:active, .fab:focus {
+    transform: scale(1.2);
+    background-color: #C51162;
+}
+
+@media screen and (max-width: 640px) {
+    .content {
+        padding-left: 0px;
+    }
+}
+
+@media screen and (max-width: 956px) {
+    header a {
+        max-width: 310px;
+    }
+}
+
+@media screen and (min-width: 1264px) {
+    .fab {
+        bottom: auto;
+        right: auto;
+        top: 40px;
+        right: 50%;
+        margin-right: -584px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    header {
+        height: 56px;
+    }
+    header a {
+        line-height: 56px;
+    }
+    .scroller {
+        padding-top: 72px;
+    }
+    .content {
+        margin-bottom: 64px;
+        padding-left: 0px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .card {
+        margin: 6px 0;
+        /*padding:0; */
+    }
+}
+
+.vote,
+.vote div {
+    float: right;
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    justify-content: center;
+    -webkit-flex-direction: row;
+}
+
+.vote div {
+    margin-left: 9px;
+}
+
+.vote span {
+    margin-left: 4px;
+}
+
+.vote svg {
+    pointer-events: none;
+    margin-top: 1px;
+}
+
+.voted,
+.vote.on div:hover {
+    color: #ff4081;
+}
+
+.voted svg,
+.vote.on div:hover svg {
+    fill: #ff4081;
+}
+
+.vote > *{
+    cursor: default !important;
+}
+
+.vote.on > *{
+    cursor: pointer !important;
+}
+
+.bounce {
+    animation-name: bounceIn;
+    animation-duration: 450ms;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    font-weight: bold;
+    z-index: 3;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3) translate3d(0, 0, 0);
+    }
+    50% {
+        transform: scale(2.3);
+    }
+    80% {
+        transform: scale(0.89);
+    }
+    100% {
+        transform: scale(1) translate3d(0, 0, 0);
+    }
+}
+        .animated{-webkit-animation-duration:1s;-moz-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;animation-fill-mode:both}.animated.infinite{-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;animation-iteration-count:infinite}.animated.hinge{-webkit-animation-duration:2s;-moz-animation-duration:2s;animation-duration:2s}.animated.bounceIn,.animated.bounceOut,.animated.flipOutX,.animated.flipOutY{-webkit-animation-duration:.75s;-moz-animation-duration:.75s;animation-duration:.75s}@-webkit-keyframes fadeIn{0%{opacity:0}to{opacity:1}}@-moz-keyframes fadeIn{0%{opacity:0}to{opacity:1}}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}.fadeIn{-webkit-animation-name:fadeIn;-moz-animation-name:fadeIn;animation-name:fadeIn}@-webkit-keyframes zoomInDown{0%{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(0,60px,0);transform:scale3d(.475,.475,.475) translate3d(0,60px,0);-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}@-moz-keyframes zoomInDown{0%{opacity:0;-moz-transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);-moz-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-moz-transform:scale3d(.475,.475,.475) translate3d(0,60px,0);transform:scale3d(.475,.475,.475) translate3d(0,60px,0);-moz-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}@keyframes zoomInDown{0%{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);-moz-transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);-moz-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(0,60px,0);-moz-transform:scale3d(.475,.475,.475) translate3d(0,60px,0);transform:scale3d(.475,.475,.475) translate3d(0,60px,0);-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);-moz-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}.zoomInDown{-webkit-animation-name:zoomInDown;-moz-animation-name:zoomInDown;animation-name:zoomInDown}@-webkit-keyframes fadeOut{0%{opacity:1}to{opacity:0}}@-moz-keyframes fadeOut{0%{opacity:1}to{opacity:0}}@keyframes fadeOut{0%{opacity:1}to{opacity:0}}.fadeOut{-webkit-animation-name:fadeOut;-moz-animation-name:fadeOut;animation-name:fadeOut}@-webkit-keyframes fadeOutDown{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}@-moz-keyframes fadeOutDown{0%{opacity:1}to{opacity:0;-moz-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}@keyframes fadeOutDown{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(0,100%,0);-moz-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}.fadeOutDown{-webkit-animation-name:fadeOutDown;-moz-animation-name:fadeOutDown;animation-name:fadeOutDown}    </style>
+</head>
+<body>
+    <noscript>
+        <style type="text/css">
+            .vote{
+                display: none;
+            }
+        </style>
+    </noscript>
+    <a href="/submit" class="fab animated zoomInDown">
+        <svg><g id="add"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></g></svg>
+    </a>	<header>
+		<a href="/hot"><img src="/img/icons/hot.svg"> Hot</a><a href="/new" class="active"><img src="/img/icons/new.svg"> New</a>
+	</header>
+	<div class="scroller animated fadeIn">
+		<div class="content">
+					<div class="card">
+			<a href="/click?url=https%3A%2F%2Fwww.google.fr%2F%3Fgws_rd%3Dssl" target="_blank">
+				<img src="public/img/thumbnails/d780d481a1286c7463153e4c38cd9dd1.jpg" class="image">
+    			<div class="card-content">
+    				<div class="title">Journée internationale des droits de l'enfant #GoogleDoodle</div>
+    				<div class="details">5h ago | google.fr</div>
+    			</div>
+            </a>
+			<div class="card-actions" title="Vote up.">
+				<img class="icon" src="/img/icons/views.svg"> 2 
+				<div class="vote on">
+					<div id="vote-2-up">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/>
+                        </svg> 
+                        <span>2</span>
+                    </div>
+					<div id="vote-2-down" title="Vote down.">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+                        </svg> 
+                        <span>0</span>
+                    </div>
+				</div>
+			</div>
+		</div>		<div class="card">
+			<a href="/click?url=https%3A%2F%2Faws.amazon.com%2Fblogs%2Faws%2Fnew-for-aws-lambda-environment-variables-and-serverless-application-model%2F" target="_blank">
+				<img src="public/img/thumbnails/7fc6a195a4541ddb3a0b7267309f4d74.jpg" class="image">
+    			<div class="card-content">
+    				<div class="title">New for AWS Lambda – Environment Variables and Serverless Application Model (SAM)</div>
+    				<div class="details">5h ago | aws.amazon.com</div>
+    			</div>
+            </a>
+			<div class="card-actions" title="Vote up.">
+				<img class="icon" src="/img/icons/views.svg"> 1 
+				<div class="vote on">
+					<div id="vote-6-up">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/>
+                        </svg> 
+                        <span>1</span>
+                    </div>
+					<div id="vote-6-down" title="Vote down.">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+                        </svg> 
+                        <span>0</span>
+                    </div>
+				</div>
+			</div>
+		</div>		<div class="card">
+			<a href="/click?url=http%3A%2F%2Fwww.wsj.com%2Farticles%2Fwal-mart-tells-workers-dont-download-labor-groups-chat-app-1479214510" target="_blank">
+				<img src="public/img/thumbnails/7d48500232056280ccaa47d6b385176d.jpg" class="image">
+    			<div class="card-content">
+    				<div class="title">Wal-Mart Tells Workers: Don?t Download Labor Group?s Chat App</div>
+    				<div class="details">5h ago | wsj.com</div>
+    			</div>
+            </a>
+			<div class="card-actions" title="Vote up.">
+				<img class="icon" src="/img/icons/views.svg"> 1 
+				<div class="vote on">
+					<div id="vote-5-up">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/>
+                        </svg> 
+                        <span>1</span>
+                    </div>
+					<div id="vote-5-down" title="Vote down.">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+                        </svg> 
+                        <span>0</span>
+                    </div>
+				</div>
+			</div>
+		</div>		<div class="card">
+			<a href="/click?url=https%3A%2F%2Fwww.google.es%2F%3Fgws_rd%3Dssl" target="_blank">
+				<img src="public/img/thumbnails/d780d481a1286c7463153e4c38cd9dd1.jpg" class="image">
+    			<div class="card-content">
+    				<div class="title">Día Universal del Niño 2016 #GoogleDoodle</div>
+    				<div class="details">5h ago | google.es</div>
+    			</div>
+            </a>
+			<div class="card-actions" title="Vote up.">
+				<img class="icon" src="/img/icons/views.svg"> 2 
+				<div class="vote on">
+					<div id="vote-1-up">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/>
+                        </svg> 
+                        <span>1</span>
+                    </div>
+					<div id="vote-1-down" title="Vote down.">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+                        </svg> 
+                        <span>0</span>
+                    </div>
+				</div>
+			</div>
+		</div>		<div class="card">
+			<a href="/click?url=https%3A%2F%2Fwww.google.de%2F%3Fgws_rd%3Dssl" target="_blank">
+				<img src="public/img/thumbnails/be1eb9cffbd3809f00652dc99e7187a4.jpg" class="image">
+    			<div class="card-content">
+    				<div class="title">Google</div>
+    				<div class="details">5h ago | google.de</div>
+    			</div>
+            </a>
+			<div class="card-actions" title="Vote up.">
+				<img class="icon" src="/img/icons/views.svg"> 1 
+				<div class="vote on">
+					<div id="vote-3-up">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/>
+                        </svg> 
+                        <span>1</span>
+                    </div>
+					<div id="vote-3-down" title="Vote down.">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+                        </svg> 
+                        <span>0</span>
+                    </div>
+				</div>
+			</div>
+		</div>		<div class="card">
+			<a href="/click?url=https%3A%2F%2Fde.yahoo.com%2F%3Fp%3Dus" target="_blank">
+				<img src="public/img/thumbnails/88da9d76ebd4f7afe63592eff70906e6.jpg" class="image">
+    			<div class="card-content">
+    				<div class="title">Yahoo</div>
+    				<div class="details">5h ago | de.yahoo.com</div>
+    			</div>
+            </a>
+			<div class="card-actions" title="Vote up.">
+				<img class="icon" src="/img/icons/views.svg"> 2 
+				<div class="vote on">
+					<div id="vote-4-up">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/>
+                        </svg> 
+                        <span>1</span>
+                    </div>
+					<div id="vote-4-down" title="Vote down.">
+                        <svg fill="#373d3f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+                        </svg> 
+                        <span>1</span>
+                    </div>
+				</div>
+			</div>
+		</div>		</div>
+	</div>
+	<footer>Frontpage of the World Wide Web.</footer>
+	<script src="/vote.js" async defer></script>
+	<img src="/rank" style="display:none;">
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+remove duplicate lines:
+perl -i -ne 'print if ! $a{$_}++' examples-porn-full.txt
+
+reduce to every 60th line:
+awk 'NR == 1 || NR % 60 == 0' examples-porn-full.txt > examples-bad.txt
+
+
+shuffle file:
+gshuf -o examples-bad.txt < examples-bad.txt
